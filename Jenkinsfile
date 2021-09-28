@@ -8,7 +8,7 @@ pipeline{
         kind: Pod
         spec:
           containers:
-          - name: bc15-helm
+          - name: bc16-helm
             image: alpine/helm
             command:
             - cat
@@ -24,8 +24,8 @@ pipeline{
 				
                 stage("add Repo") {
                         steps {
-                            container('bc15-helm'){
-                               sh "helm repo add  bc15gc https://pdhanrajnath.github.io/gc/ "
+                            container('bc16-helm'){
+                               sh "helm repo add  bc16 https://venkatarishmithaaita.github.io/jenkins-dashboard-bc16/ "
                             }
                             
                         }
@@ -37,7 +37,7 @@ pipeline{
                                sh """
                                   export KUBECONFIG=\${MY_KUBECONFIG}
                                   helm repo update 
-                                  helm install bc15 bc15gc/bc15-gc -n bc15                              
+                                  helm install bc16 bc16/bc16-gc -n bc16                              
                                   """
                             //     sh "export KUBECONFIG=\${config} helm repo update --kubeconfig=$MY_KUBECONFIG"
                             //   sh "export KUBECONFIG=\${config} helm install voting myvoteapp --kubeconfig=$MY_KUBECONFIG"
