@@ -18,7 +18,7 @@ pipeline{
     }
 		}
     environment {
-        MY_KUBECONFIG = credentials('config-file')
+        MY_KUBECONFIG = credentials('my-config')
     }
 		stages{
 				
@@ -33,11 +33,11 @@ pipeline{
                     
                 stage("Build") {
                         steps {
-                            container('bc15-helm'){
+                            container('bc16-helm'){
                                sh """
                                   export KUBECONFIG=\${MY_KUBECONFIG}
                                   helm repo update 
-                                  helm install bc16 bc16/bc16-gc -n bc16                              
+                                  helm install bc16 bc16/helm1 -n bc16                              
                                   """
                             //     sh "export KUBECONFIG=\${config} helm repo update --kubeconfig=$MY_KUBECONFIG"
                             //   sh "export KUBECONFIG=\${config} helm install voting myvoteapp --kubeconfig=$MY_KUBECONFIG"
