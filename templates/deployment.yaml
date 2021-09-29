@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: rishmitha/ingressfe2
+        image: sharansripada/fe_jenkins
         ports:
         - containerPort: 80
 
@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
       - name: job
-        image: rishmitha/ingressjsbe
+        image: sharansripada/job_jenkins
         ports:
           - containerPort: 8082
         env: 
@@ -83,7 +83,7 @@ spec:
     spec:
       containers:
       - name: org
-        image: rishmitha/orgsvc
+        image: sharansripada/org_jenkins
         ports:
         - containerPort: 8081
         env: 
