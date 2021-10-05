@@ -12,7 +12,25 @@ podTemplate(label: 'bc16-gc', containers: [
 // 		MY_KUBECONFIG = credentials('master2-rishmita')
 // 	}
 	
-
+properties([
+            parameters([
+                string(
+                    defaultValue: 'latest',
+                    description: '', 
+                    name: 'fe_tag',
+                    trim: true),
+                string(
+                    defaultValue: 'latest',
+                    description: '', 
+                    name: 'job_tag',
+                    trim: true),
+		string(
+                    defaultValue: 'latest',
+                    description: '', 
+                    name: 'org_tag',
+                    trim: true),
+            ])
+        ])
     
                 stage("Helm install") {
                         git 'https://github.com/VenkataRishmithaAita/jenkins-dashboard-bc16'
@@ -22,7 +40,7 @@ podTemplate(label: 'bc16-gc', containers: [
 
                                sh """
                                   export KUBECONFIG=\${config}
-                                  helm upgrade --install  bc16 . -n bc16                              
+                                  helm upgrade --install  bc16 . -n bc16  --set fetag=${fe_tag} --set jobtag=${job_tag} --set orgtag=${org_tag}                         
                                   """
                         }    
                     }
