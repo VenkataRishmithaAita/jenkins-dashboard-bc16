@@ -1,4 +1,5 @@
 replicaCount: 2
 
 fetag: latest
-betag: latest
+jobtag: latest
+orgtag: latest
