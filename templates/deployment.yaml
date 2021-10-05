@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sharansripada/fe_jenkins
+        image: rishmitha/fe_jenkins:{{ .Values.fetag }}
         ports:
         - containerPort: 80
 
@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
       - name: job
-        image: sharansripada/job_jenkins
+        image: rishmitha/job_jenkins:{{ .Values.jobtag }}
         ports:
           - containerPort: 8082
         env: 
@@ -83,7 +83,7 @@ spec:
     spec:
       containers:
       - name: org
-        image: sharansripada/org_jenkins
+        image: rishmitha/org_jenkins:{{ .Values.orgtag }}
         ports:
         - containerPort: 8081
         env: 
