@@ -5,7 +5,7 @@ podTemplate(label: 'bc16-gc', containers: [
 	volumes: [hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 ) {
 
-  node('bc15-gc'){
+  node('bc16-gc'){
 //   	environment {
 // 		docker_image=""
 // 		// MY_KUBECONFIG = credentials('config-file')
@@ -16,7 +16,7 @@ podTemplate(label: 'bc16-gc', containers: [
     
                 stage("Helm install") {
                         git 'https://github.com/VenkataRishmithaAita/jenkins-dashboard-bc16'
-                           container('bc15-helm'){
+                           container('bc16-helm'){
                                withCredentials([file(credentialsId: 'master2-rishmita', variable: 'config')]) {
 
 
