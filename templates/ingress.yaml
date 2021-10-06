@@ -24,19 +24,19 @@ metadata:
   name: bc16-ingress-fe
   namespace: bc16
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /api/v1/
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /jobs/
+      - path: /api/v1/jobs/
         pathType: Prefix
         backend:
           service:
             name: job-service
             port:
               number: 8082
-      - path: /api/v1/organizations/
+      - path: /api/v1/
         pathType: Prefix
         backend:
           service:
